@@ -5,21 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>मानाचा गणपती सुदामनगरचा</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Tiro Devanagari Marathi',sans-serif;
+    font-family:'Noto Sans Devanagari', sans-serif;
 }
 
 html{
     scroll-behavior:smooth;
 }
 
-body{
+body{ 
     background:#fff8e7;
     color:#333;
     transition:0.3s;
@@ -44,7 +44,7 @@ body.dark .contact{
     background:#ff9800;
     color:white;
     text-align:center;
-    padding:6px;
+    padding:8px;
     font-size:14px;
 }
 
@@ -91,6 +91,20 @@ body.dark .contact{
 
 /* HERO */
 .hero{
+    .hero{
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.hero h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+.hero p{
+    font-size:22px;
+}
     text-align:center;
     padding:60px 20px;
     background:linear-gradient(45deg,#ff9800,#ff5722);
@@ -98,7 +112,17 @@ body.dark .contact{
     position:relative;
     overflow:hidden;
 }
+.hero img{
+    margin-bottom: 25px;
+}
 
+.hero h1{
+    margin-bottom: 15px;
+}
+
+.hero p{
+    margin-bottom: 20px;
+}
 /* FIREWORK EFFECT */
 .hero::before{
     content:"";
@@ -113,6 +137,23 @@ body.dark .contact{
 @keyframes move{
     from{transform:translateY(0);}
     to{transform:translateY(-40px);}
+}
+.hero h1{
+    font-size:48px;
+    text-shadow:0 0 10px rgba(255,255,255,0.6),
+                0 0 20px rgba(255,200,0,0.8);
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
+}
+
+
+@keyframes move{
+    from{transform:translateX(100%);}
+    to{transform:translateX(-100%);}
 }
 
 /* SECTION */
@@ -140,22 +181,25 @@ body.dark .contact{
     gap:15px;
 }
 
-/* GALLERY */
-.gallery{
+
+    .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:10px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    padding:20px;
 }
 
 .gallery img{
     width:100%;
-    border-radius:10px;
-    cursor:pointer;
-    transition:0.3s;
+    height:350px;
+    object-fit:contain;
+    background:white;
+    border-radius:15px;
+    padding:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
-
 .gallery img:hover{
-    transform:scale(1.07);
+    transform:scale(1);
 }
 
 /* LIGHTBOX */
@@ -170,7 +214,184 @@ body.dark .contact{
     justify-content:center;
     align-items:center;
 }
+.hero{
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px;
+    background:linear-gradient(45deg,#ff9800,#ff5722);
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+.hero img{
+    width:300px;
+    height:auto;
+    border-radius:20px;
+}
+/* Proper spacing between sections */
+.section{
+    padding: 60px 20px;
+    margin-bottom: 30px;
+}
 
+/* Space below headings */
+.section h2{
+    margin-bottom: 25px;
+}
+
+/* Space inside cards and boxes */
+.about-box,
+.card,
+.upi-box,
+.contact{
+    padding: 25px;
+    margin-top: 15px;
+}
+
+/* Space between cards */
+.cards{
+    gap: 25px;
+}
+
+/* Space between gallery images */
+.gallery{
+    gap: 20px;
+}
+
+/* Footer spacing */
+footer{
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+}
+/* Falling Flowers */
+.flowers{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.flowers span{
+    position:absolute;
+    top:-50px;
+    font-size:30px;
+    animation:fall linear infinite;
+}
+
+.flowers span:nth-child(1){left:5%;animation-duration:8s;}
+.flowers span:nth-child(2){left:20%;animation-duration:10s;}
+.flowers span:nth-child(3){left:35%;animation-duration:7s;}
+.flowers span:nth-child(4){left:50%;animation-duration:12s;}
+.flowers span:nth-child(5){left:65%;animation-duration:9s;}
+.flowers span:nth-child(6){left:80%;animation-duration:11s;}
+.flowers span:nth-child(7){left:90%;animation-duration:8s;}
+.flowers span:nth-child(8){left:97%;animation-duration:13s;}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-100px) rotate(0deg);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Golden Sparkles */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255, 238, 0, 0.897) 2px, transparent 3px),
+      radial-gradient(circle at 70% 40%, rgb(255, 217, 0) 2px, transparent 3px),
+      radial-gradient(circle at 40% 80%, rgb(255, 217, 0) 2px, transparent 3px),
+      radial-gradient(circle at 90% 10%, rgb(255, 217, 0) 2px, transparent 3px);
+    animation:sparkle 4s infinite alternate;
+    z-index:0;
+}
+
+@keyframes sparkle{
+    from{
+        opacity:0.3;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* Content always above animation */
+.navbar,
+.hero,
+.section,
+footer{
+    position:relative;
+    z-index:2;
+}
+/* Animated Background */
+.hero::before{
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:
+    radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 2px);
+    background-size:50px 50px;
+    animation:floatBg 15s linear infinite;
+}
+let index = 0;
+const imgs = document.querySelectorAll(".gallery img");
+
+setInterval(()=>{
+    imgs.forEach(i=>i.style.transform="scale(1)");
+    imgs[index].style.transform="scale(1.2)";
+    index = (index+1)%imgs.length;
+},2000);
+.hero > *{
+    position:relative;
+    z-index:2;
+}
+document.body.addEventListener("click", function(e){
+    const fire = document.createElement("div");
+    fire.innerHTML = "🎆";
+    fire.style.position = "absolute";
+    fire.style.left = e.clientX + "px";
+    fire.style.top = e.clientY + "px";
+    fire.style.fontSize = "25px";
+    fire.style.animation = "fade 1s ease-out";
+    document.body.appendChild(fire);
+
+    @keyframes fade{
+    from{opacity:1;transform:scale(1);}
+    to{opacity:0;transform:scale(2) translateY(-50px);}
+}
+
+    setTimeout(()=>fire.remove(),1000);
+});
+@keyframes floatBg{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(50px,20px);
+    }
+}
 .lightbox img{
     max-width:90%;
     max-height:80%;
@@ -231,13 +452,14 @@ body.dark .contact{
     color:#ff6f00;
 }
 </style>
+
 </head>
 
 <body>
-
+<div class=गणपती बाप्पा मोरया | सुदामनगरचा मानाचा गणपती | पुढच्या वर्षी लवकर या</div>
 <!-- TOP BAR -->
 <div class="topbar">
-🎉 गणपती बाप्पा मोरया | मानाचा गणपती सुदामनगरचा 🎉
+ गणपती बाप्पा मोरया | मानाचा गणपती सुदामनगरचा 
 </div>
 
 <!-- NAVBAR -->
@@ -246,7 +468,7 @@ body.dark .contact{
 
     <div style="display:flex;align-items:center;">
         <div class="hamburger" onclick="toggleMenu()">☰</div>
-        <div class="mode" onclick="toggleDark()">🌙</div>
+        <div class="mode" onclick="toggleDark()"></div>
     </div>
 
     <ul class="nav-links" id="menu">
@@ -262,37 +484,111 @@ body.dark .contact{
 </div>
 
 <!-- HERO -->
+ 
+<div class="flowers">
+  <span>🌼</span>
+  <span>🌸</span>
+  <span>🌺</span>
+  <span>🌼</span>
+  <span>🌸</span>
+  <span>🌺</span>
+  <span>🌼</span>
+  <span>🌸</span>
+</div>
 <section class="hero" id="home">
+    <img src="photo1.jpeg" alt="Ganpati">
+
     <h1>॥ मानाचा गणपती सुदामनगरचा ॥</h1>
+
     <p>४५ वर्षांची गौरवशाली परंपरा</p>
 </section>
-
-<!-- ABOUT -->
 <section class="section" id="about">
-    <h2>मंडळाची माहिती</h2>
+    <h2>मंडळाचा इतिहास</h2>
+
     <div class="about-box">
-        <p>मानाचा गणपती सुदामनगरचा हे मंडळ ४५ वर्षांपासून गणेशोत्सव साजरा करत आहे.</p>
+
+        <p>
+            मानाचा गणपती सुदामनगरचा हे मंडळ गेल्या <b>४५ वर्षांपासून</b> भक्तिभावाने गणेशोत्सव साजरा करत आहे.
+        </p>
+
+        <br>
+
+        <p>
+            सुरुवात काही मोजक्या कार्यकर्त्यांनी छोट्या स्वरूपात केली होती. 
+            हळूहळू परिसरातील नागरिक, युवक आणि ज्येष्ठ मंडळी यांचा सहभाग वाढत गेला आणि आज हे मंडळ
+            सुदामनगर परिसरातील एक प्रतिष्ठित आणि मानाचा गणपती म्हणून ओळखले जाते.
+        </p>
+
+        <br>
+
+        <p>
+            या वर्षांमध्ये मंडळाने अनेक सामाजिक उपक्रम राबवले आहेत जसे की:
+            <ul style="margin-left:20px; margin-top:10px;">
+                <li>रक्तदान शिबिर</li>
+                <li>आरोग्य तपासणी शिबिर</li>
+                <li>विद्यार्थ्यांना शैक्षणिक मदत</li>
+                <li>स्वच्छता मोहिम</li>
+            </ul>
+        </p>
+
+        <br>
+
+        <p>
+            गणेशोत्सवाच्या काळात दररोज आरती, भजन, सांस्कृतिक कार्यक्रम आणि भक्तिमय वातावरण निर्माण केले जाते.
+            हजारो भाविक दरवर्षी बाप्पाचे दर्शन घेण्यासाठी येथे येतात.
+        </p>
+
+        <br>
+
+        <p>
+            <b>“गणपती बाप्पा मोरया”</b> हा नारा केवळ घोष नाही तर आमच्या मंडळाची ओळख आणि श्रद्धा आहे.
+        </p>
+
     </div>
 </section>
-
+<div class="section">
+  <h2>गणेशोत्सव काउंटडाऊन</h2>
+  <div class="card" style="text-align:center;font-size:22px;" id="countdown"></div>
+</div>
 <!-- COMMITTEE -->
 <section class="section" id="committee">
     <h2>कार्यकारिणी</h2>
+
     <div class="cards">
-        <div class="card"><h3>अध्यक्ष</h3><p>Sagar Bagul</p></div>
-        <div class="card"><h3>मार्गदर्शक</h3><p>Rajendra Mane</p></div>
-        <div class="card"><h3>उपाध्यक्ष</h3><p>-</p></div>
-        <div class="card"><h3>सचिव</h3><p>-</p></div>
-        <div class="card"><h3>खजिनदार</h3><p>Shrikant Kakad</p></div>
+
+        <div class="card">
+            <h3>अध्यक्ष</h3>
+            <p>सागर बागुल</p>
+        </div>
+
+        <div class="card">
+            <h3>मार्गदर्शक</h3>
+            <p>राजेंद्र माने</p>
+        </div>
+
+        <div class="card">
+    <h3>उपाध्यक्ष</h3>
+    <p>सुहास मोर्डे, मनोज पतंगे</p>
+</div>
+
+        <div class="card">
+            <h3>सचिव</h3>
+            <p>अमित परब</p>
+        </div>
+
+        <div class="card">
+            <h3>खजिनदार</h3>
+            <p>श्रीकांत काकड</p>
+        </div>
+
     </div>
 </section>
-
 <!-- EVENTS -->
 <section class="section" id="events">
     <h2>कार्यक्रम</h2>
     <div class="cards">
-        <div class="card"><h3>सकाळची आरती</h3><p>8:00 AM</p></div>
-        <div class="card"><h3>महाआरती</h3><p>8:00 PM</p></div>
+        <div class="card"><h3>सकाळची आरती</h3><p>12:00 AM</p></div>
+        <div class="card"><h3>महाआरती</h3><p>9:00 PM</p></div>
         <div class="card"><h3>सांस्कृतिक कार्यक्रम</h3><p>8:30 PM</p></div>
     </div>
 </section>
@@ -302,8 +598,9 @@ body.dark .contact{
     <h2>छायाचित्रे</h2>
     <div class="gallery">
         <img src="photo1.jpeg" onclick="openLight(this.src)">
-        <img src="https://picsum.photos/300/200?2" onclick="openLight(this.src)">
-        <img src="https://picsum.photos/300/200?3" onclick="openLight(this.src)">
+<img src="photo2.jpeg" onclick="openLight(this.src)">
+<img src="photo3.jpeg" onclick="openLight(this.src)">
+<img src="photo4.jpeg" onclick="openLight(this.src)">
     </div>
 </section>
 
@@ -345,7 +642,7 @@ body.dark .contact{
 <a class="whatsapp" href="https://wa.me/918104291443" target="_blank">📲</a>
 
 <footer>
-    © 2026 मानाचा गणपती सुदामनगरचा 🙏
+    © 2026 मानाचा गणपती सुदामनगरचा 
 </footer>
 
 <script>
@@ -366,8 +663,33 @@ function openLight(src){
 function closeLight(){
     document.getElementById("lightbox").style.display="none";
 }
+function updateCountdown(){
+    const target = new Date("September 17, 2026 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((diff%(1000*60*60))/(1000*60));
+
+    document.getElementById("countdown").innerHTML =
+    days + " दिवस " + hours + " तास " + mins + " मिनिटे";
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+let i = 0;
+const imgs = document.querySelectorAll(".gallery img");
+
+setInterval(()=>{
+    imgs.forEach(img=>img.style.transform="scale(1)");
+    if(imgs[i]){
+        imgs[i].style.transform="scale(1.15)";
+    }
+    i = (i+1)%imgs.length;
+},2000);
 
 </script>
+
 
 </body>
 </html>
