@@ -1,695 +1,727 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>मानाचा गणपती सुदामनगरचा</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मानाचा गणपती सुदामनगरचा</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #f57c00;
+      --vermilion: #d84315;
+      --marigold: #ffca28;
+      --leaf: #2e7d32;
+      --ink: #2f261d;
+      --muted: #6e5d4b;
+      --paper: #fff8e7;
+      --surface: #ffffff;
+      --border: rgba(111, 66, 25, 0.16);
+      --shadow: 0 12px 28px rgba(87, 47, 10, 0.12);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Noto Sans Devanagari', sans-serif;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-html{
-    scroll-behavior:smooth;
-}
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 202, 40, 0.26), transparent 25%),
+        radial-gradient(circle at 88% 18%, rgba(216, 67, 21, 0.12), transparent 28%),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Noto Sans Devanagari", system-ui, sans-serif;
 
-body{ 
-    background:#fff8e7;
-    color:#333;
-    transition:0.3s;
-}
+      line-height: 1.65;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
 
-/* DARK MODE */
-body.dark{
-    background:#121212;
-    color:white;
-}
+    body.dark {
+      --paper: #14110f;
+      --surface: #211c18;
+      --ink: #fff6e6;
+      --muted: #d7c5aa;
+      --border: rgba(255, 202, 40, 0.18);
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 202, 40, 0.14), transparent 25%),
+        radial-gradient(circle at 88% 18%, rgba(216, 67, 21, 0.2), transparent 28%),
+        var(--paper);
+    }
 
-body.dark .about-box,
-body.dark .card,
-body.dark .upi-box,
-body.dark .contact{
-    background:#1e1e1e;
-    color:white;
-}
+    a {
+      color: inherit;
+    }
 
-/* TOP BAR */
-.topbar{
-    background:#ff9800;
-    color:white;
-    text-align:center;
-    padding:8px;
-    font-size:14px;
-}
+    .topbar {
+      background: #7b1f09;
+      color: #fff8e7;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-/* NAVBAR */
-.navbar{
-    background:#ff6f00;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px clamp(16px, 4vw, 48px);
+      background: rgba(216, 67, 21, 0.96);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(85, 31, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
 
-.logo{
-    font-size:18px;
-    font-weight:bold;
-}
+    .logo {
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
-.nav-links{
-    display:flex;
-    list-style:none;
-    gap:15px;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-}
+    .nav-links a {
+      border-radius: 999px;
+      padding: 6px 9px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
 
-.hamburger{
-    display:none;
-    font-size:26px;
-    cursor:pointer;
-}
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.18);
+      outline: none;
+    }
 
-.mode{
-    cursor:pointer;
-    font-size:20px;
-    margin-left:10px;
-}
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* HERO */
-.hero{
-    .hero{
-    min-height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
-.hero h1{
-    font-size:48px;
-    margin-bottom:10px;
-}
-.hero p{
-    font-size:22px;
-}
-    text-align:center;
-    padding:60px 20px;
-    background:linear-gradient(45deg,#ff9800,#ff5722);
-    color:white;
-    position:relative;
-    overflow:hidden;
-}
-.hero img{
-    margin-bottom: 25px;
-}
+    .icon-button {
+      display: inline-grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      cursor: pointer;
+      font-size: 20px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
 
-.hero h1{
-    margin-bottom: 15px;
-}
+    .icon-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.24);
+    }
 
-.hero p{
-    margin-bottom: 20px;
-}
-/* FIREWORK EFFECT */
-.hero::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:radial-gradient(circle,rgba(255,255,255,0.15) 2px,transparent 3px);
-    background-size:40px 40px;
-    animation:move 10s linear infinite;
-}
+    .hamburger {
+      display: none;
+    }
 
-@keyframes move{
-    from{transform:translateY(0);}
-    to{transform:translateY(-40px);}
-}
-.hero h1{
-    font-size:48px;
-    text-shadow:0 0 10px rgba(255,255,255,0.6),
-                0 0 20px rgba(255,200,0,0.8);
-    animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-    from{transform:scale(1);}
-    to{transform:scale(1.05);}
-}
-
-
-@keyframes move{
-    from{transform:translateX(100%);}
-    to{transform:translateX(-100%);}
-}
-
-/* SECTION */
-.section{
-    padding:40px 20px;
-}
-
-.section h2{
-    margin-bottom:15px;
-    color:#e65100;
-}
-
-/* BOX */
-.about-box,.card,.upi-box,.contact{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
-
-/* CARDS */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-}
-
-
-    .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-    padding:20px;
-}
-
-.gallery img{
-    width:100%;
-    height:350px;
-    object-fit:contain;
-    background:white;
-    border-radius:15px;
-    padding:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
-.gallery img:hover{
-    transform:scale(1);
-}
-
-/* LIGHTBOX */
-.lightbox{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.9);
-    display:none;
-    justify-content:center;
-    align-items:center;
-}
-.hero{
-    min-height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:60px 20px;
-    background:linear-gradient(45deg,#ff9800,#ff5722);
-    color:white;
-    position:relative;
-    overflow:hidden;
-}
-.hero img{
-    width:300px;
-    height:auto;
-    border-radius:20px;
-}
-/* Proper spacing between sections */
-.section{
-    padding: 60px 20px;
-    margin-bottom: 30px;
-}
-
-/* Space below headings */
-.section h2{
-    margin-bottom: 25px;
-}
-
-/* Space inside cards and boxes */
-.about-box,
-.card,
-.upi-box,
-.contact{
-    padding: 25px;
-    margin-top: 15px;
-}
-
-/* Space between cards */
-.cards{
-    gap: 25px;
-}
-
-/* Space between gallery images */
-.gallery{
-    gap: 20px;
-}
-
-/* Footer spacing */
-footer{
-    margin-top: 50px;
-    padding: 20px;
+  
+     .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-}
-/* Falling Flowers */
-.flowers{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:1;
-}
+    color: white;
 
-.flowers span{
-    position:absolute;
-    top:-50px;
-    font-size:30px;
-    animation:fall linear infinite;
-}
+    background-image:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("hero.png");
 
-.flowers span:nth-child(1){left:5%;animation-duration:8s;}
-.flowers span:nth-child(2){left:20%;animation-duration:10s;}
-.flowers span:nth-child(3){left:35%;animation-duration:7s;}
-.flowers span:nth-child(4){left:50%;animation-duration:12s;}
-.flowers span:nth-child(5){left:65%;animation-duration:9s;}
-.flowers span:nth-child(6){left:80%;animation-duration:11s;}
-.flowers span:nth-child(7){left:90%;animation-duration:8s;}
-.flowers span:nth-child(8){left:97%;animation-duration:13s;}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    
 
-@keyframes fall{
-    0%{
-        transform:translateY(-100px) rotate(0deg);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
-    }
-}
+   
 
-/* Golden Sparkles */
-body::before{
-    content:"";
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(255, 238, 0, 0.897) 2px, transparent 3px),
-      radial-gradient(circle at 70% 40%, rgb(255, 217, 0) 2px, transparent 3px),
-      radial-gradient(circle at 40% 80%, rgb(255, 217, 0) 2px, transparent 3px),
-      radial-gradient(circle at 90% 10%, rgb(255, 217, 0) 2px, transparent 3px);
-    animation:sparkle 4s infinite alternate;
-    z-index:0;
-}
-
-@keyframes sparkle{
-    from{
-        opacity:0.3;
-    }
-    to{
-        opacity:1;
-    }
-}
-
-/* Content always above animation */
-.navbar,
-.hero,
-.section,
-footer{
-    position:relative;
-    z-index:2;
-}
-/* Animated Background */
-.hero::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:
-    radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 2px);
-    background-size:50px 50px;
-    animation:floatBg 15s linear infinite;
-}
-let index = 0;
-const imgs = document.querySelectorAll(".gallery img");
-
-setInterval(()=>{
-    imgs.forEach(i=>i.style.transform="scale(1)");
-    imgs[index].style.transform="scale(1.2)";
-    index = (index+1)%imgs.length;
-},2000);
-.hero > *{
-    position:relative;
-    z-index:2;
-}
-document.body.addEventListener("click", function(e){
-    const fire = document.createElement("div");
-    fire.innerHTML = "🎆";
-    fire.style.position = "absolute";
-    fire.style.left = e.clientX + "px";
-    fire.style.top = e.clientY + "px";
-    fire.style.fontSize = "25px";
-    fire.style.animation = "fade 1s ease-out";
-    document.body.appendChild(fire);
-
-    @keyframes fade{
-    from{opacity:1;transform:scale(1);}
-    to{opacity:0;transform:scale(2) translateY(-50px);}
-}
-
-    setTimeout(()=>fire.remove(),1000);
-});
-@keyframes floatBg{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(50px,20px);
-    }
-}
-.lightbox img{
-    max-width:90%;
-    max-height:80%;
-    border-radius:10px;
-}
-
-/* MAP */
-.map{
-    width:100%;
-    height:300px;
-    border:0;
-    border-radius:10px;
-}
-
-/* WHATSAPP */
-.whatsapp{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#25D366;
-    color:white;
-    font-size:26px;
-    padding:15px;
-    border-radius:50%;
-    text-decoration:none;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .nav-links{
-        display:none;
-        flex-direction:column;
-        position:absolute;
-        top:60px;
-        right:0;
-        background:#ff6f00;
-        width:200px;
-        padding:10px;
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(900px, 100%);
     }
 
-    .nav-links.active{
-        display:flex;
+    .hero-image-wrap {
+      width: min(320px, 72vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+      border: 10px solid rgba(255, 247, 214, 0.8);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 36%, #fff0b7, #f9a825 48%, #b73b12 100%);
+      box-shadow: 0 22px 42px rgba(58, 18, 0, 0.28);
+      overflow: hidden;
     }
 
-    .hamburger{
-        display:block;
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
+    .image-fallback {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      padding: 28px;
+      color: #7b1f09;
+      font-size: clamp(48px, 14vw, 104px);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 7vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 0 3px 18px rgba(69, 18, 0, 0.38);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    .hero p {
+      margin-top: 14px;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 700;
+    }
+
+    .flowers {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .flowers span {
+      position: absolute;
+      top: -50px;
+      font-size: 28px;
+      animation: fall linear infinite;
+    }
+
+    .flowers span:nth-child(1) { left: 5%; animation-duration: 8s; }
+    .flowers span:nth-child(2) { left: 20%; animation-duration: 10s; }
+    .flowers span:nth-child(3) { left: 35%; animation-duration: 7s; }
+    .flowers span:nth-child(4) { left: 50%; animation-duration: 12s; }
+    .flowers span:nth-child(5) { left: 65%; animation-duration: 9s; }
+    .flowers span:nth-child(6) { left: 80%; animation-duration: 11s; }
+    .flowers span:nth-child(7) { left: 90%; animation-duration: 8s; }
+    .flowers span:nth-child(8) { left: 97%; animation-duration: 13s; }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 46px 0;
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+      color: var(--vermilion);
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.2;
+    }
+
+    body.dark .section h2 {
+      color: var(--marigold);
+    }
+
+    .about-box,
+    .card,
+    .upi-box,
+    .contact {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box {
+      padding: clamp(18px, 3vw, 28px);
+      font-size: 18px;
+    }
+
+    .about-box ul {
+      margin: 12px 0 0 22px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 120px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(87, 47, 10, 0.16);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      color: var(--saffron);
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .countdown {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px;
+      text-align: center;
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 800;
+    }
+
+    .countdown span {
+      min-width: 112px;
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: rgba(255, 202, 40, 0.18);
+      color: var(--ink);
+    }
+
+    .countdown small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery button {
+      min-height: 260px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery button:hover {
+      transform: translateY(-3px);
+    }
+
+    .gallery img,
+    .gallery .image-fallback {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .gallery .image-fallback {
+      background: linear-gradient(135deg, #fff1b8, #ffb74d, #d84315);
+      font-size: 58px;
+    }
+
+    .upi-box,
+    .contact {
+      padding: 22px;
+      font-size: 19px;
+    }
+
+    .upi-box strong {
+      color: var(--leaf);
+      font-size: 22px;
+    }
+
+    .map {
+      width: 100%;
+      height: 320px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0, 0, 0, 0.88);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img,
+    .lightbox .image-fallback {
+      max-width: min(92vw, 980px);
+      max-height: 84vh;
+      border-radius: 8px;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      font-size: 26px;
+      text-decoration: none;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 30px;
+      padding: 24px 16px;
+      background: #7b1f09;
+      color: #fff8e7;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .burst {
+      position: fixed;
+      z-index: 50;
+      pointer-events: none;
+      animation: fadeBurst 0.9s ease-out forwards;
+      font-size: 28px;
+    }
+
+    @keyframes floatBg {
+      from { transform: translate(0, 0); }
+      to { transform: translate(48px, 28px); }
+    }
+
+    @keyframes glow {
+      from { transform: scale(1); }
+      to { transform: scale(1.025); }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes fadeBurst {
+      from { opacity: 1; transform: scale(0.8) translateY(0); }
+      to { opacity: 0; transform: scale(1.8) translateY(-52px); }
+    }
+
+    @media (max-width: 900px) {
+      .hamburger {
+        display: inline-grid;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        right: 14px;
+        display: none;
+        width: min(270px, calc(100vw - 28px));
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        border-radius: 8px;
+        padding: 12px;
+        background: #b63410;
+        box-shadow: 0 18px 32px rgba(71, 20, 0, 0.26);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 10px 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        font-size: 12px;
+      }
+
+      .navbar {
+        padding: 12px 14px;
+      }
+
+      .logo {
+        max-width: 220px;
+        white-space: normal;
+        line-height: 1.25;
+      }
+
+     .hero {
+    min-height: 100vh;
+    padding-top: 70px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-/* CARD HOVER PRO */
-.card:hover{
-    transform:translateY(-5px);
-    transition:0.3s;
-}
+      .section {
+        width: min(100% - 24px, 1120px);
+        padding: 34px 0;
+      }
 
-.card h3{
-    color:#ff6f00;
-}
-</style>
+      .about-box {
+        font-size: 16px;
+      }
 
+      .gallery button,
+      .gallery img,
+      .gallery .image-fallback {
+        min-height: 220px;
+        height: 220px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-<div class=गणपती बाप्पा मोरया | सुदामनगरचा मानाचा गणपती | पुढच्या वर्षी लवकर या</div>
-<!-- TOP BAR -->
-<div class="topbar">
- गणपती बाप्पा मोरया | मानाचा गणपती सुदामनगरचा 
-</div>
+  <div class="topbar">गणपती बाप्पा मोरया | सुदामनगरचा मानाचा गणपती | पुढच्या वर्षी लवकर या</div>
 
-<!-- NAVBAR -->
-<div class="navbar">
+  <nav class="navbar" aria-label="मुख्य नेव्हिगेशन">
     <div class="logo">मानाचा गणपती सुदामनगरचा</div>
-
-    <div style="display:flex;align-items:center;">
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-        <div class="mode" onclick="toggleDark()"></div>
-    </div>
-
     <ul class="nav-links" id="menu">
-        <li><a href="#home">मुख्यपृष्ठ</a></li>
-        <li><a href="#about">मंडळ</a></li>
-        <li><a href="#committee">कार्यकारिणी</a></li>
-        <li><a href="#events">कार्यक्रम</a></li>
-        <li><a href="#gallery">छायाचित्रे</a></li>
-        <li><a href="#location">स्थान</a></li>
-        <li><a href="#donation">देणगी</a></li>
-        <li><a href="#contact">संपर्क</a></li>
+      <li><a href="#home">मुख्यपृष्ठ</a></li>
+      <li><a href="#about">मंडळ</a></li>
+      <li><a href="#committee">कार्यकारिणी</a></li>
+      <li><a href="#events">कार्यक्रम</a></li>
+      <li><a href="#gallery">छायाचित्रे</a></li>
+      <li><a href="#location">स्थान</a></li>
+      <li><a href="#donation">देणगी</a></li>
+      <li><a href="#contact">संपर्क</a></li>
     </ul>
-</div>
+    <div class="nav-actions">
+      <button class="icon-button hamburger" type="button" onclick="toggleMenu()" aria-label="मेनू उघडा">☰</button>
+      <button class="icon-button" type="button" onclick="toggleDark()" aria-label="गडद मोड">☾</button>
+    </div>
+  </nav>
 
-<!-- HERO -->
- 
-<div class="flowers">
-  <span>🌼</span>
-  <span>🌸</span>
-  <span>🌺</span>
-  <span>🌼</span>
-  <span>🌸</span>
-  <span>🌺</span>
-  <span>🌼</span>
-  <span>🌸</span>
-</div>
-<section class="hero" id="home">
-    <img src="photo1.jpeg" alt="Ganpati">
+  <div class="flowers" aria-hidden="true">
+    <span>🌼</span><span>🌸</span><span>🌺</span><span>🌼</span>
+    <span>🌸</span><span>🌺</span><span>🌼</span><span>🌸</span>
+  </div>
 
-    <h1>॥ मानाचा गणपती सुदामनगरचा ॥</h1>
-
-    <p>४५ वर्षांची गौरवशाली परंपरा</p>
-</section>
-<section class="section" id="about">
-    <h2>मंडळाचा इतिहास</h2>
-
-    <div class="about-box">
-
-        <p>
-            मानाचा गणपती सुदामनगरचा हे मंडळ गेल्या <b>४५ वर्षांपासून</b> भक्तिभावाने गणेशोत्सव साजरा करत आहे.
-        </p>
-
-        <br>
-
-        <p>
-            सुरुवात काही मोजक्या कार्यकर्त्यांनी छोट्या स्वरूपात केली होती. 
-            हळूहळू परिसरातील नागरिक, युवक आणि ज्येष्ठ मंडळी यांचा सहभाग वाढत गेला आणि आज हे मंडळ
-            सुदामनगर परिसरातील एक प्रतिष्ठित आणि मानाचा गणपती म्हणून ओळखले जाते.
-        </p>
-
-        <br>
-
-        <p>
-            या वर्षांमध्ये मंडळाने अनेक सामाजिक उपक्रम राबवले आहेत जसे की:
-            <ul style="margin-left:20px; margin-top:10px;">
-                <li>रक्तदान शिबिर</li>
-                <li>आरोग्य तपासणी शिबिर</li>
-                <li>विद्यार्थ्यांना शैक्षणिक मदत</li>
-                <li>स्वच्छता मोहिम</li>
-            </ul>
-        </p>
-
-        <br>
-
-        <p>
-            गणेशोत्सवाच्या काळात दररोज आरती, भजन, सांस्कृतिक कार्यक्रम आणि भक्तिमय वातावरण निर्माण केले जाते.
-            हजारो भाविक दरवर्षी बाप्पाचे दर्शन घेण्यासाठी येथे येतात.
-        </p>
-
-        <br>
-
-        <p>
-            <b>“गणपती बाप्पा मोरया”</b> हा नारा केवळ घोष नाही तर आमच्या मंडळाची ओळख आणि श्रद्धा आहे.
-        </p>
+  <header class="hero" id="home">
+    <div class="hero-inner">
 
     </div>
-</section>
-<div class="section">
-  <h2>गणेशोत्सव काउंटडाऊन</h2>
-  <div class="card" style="text-align:center;font-size:22px;" id="countdown"></div>
-</div>
-<!-- COMMITTEE -->
-<section class="section" id="committee">
-    <h2>कार्यकारिणी</h2>
+</header>
+  <main>
+    <section class="section" id="about">
+      <h2>मंडळाचा इतिहास</h2>
+      <div class="about-box">
+        <p>मानाचा गणपती सुदामनगरचा हे मंडळ गेल्या <strong>४५ वर्षांपासून</strong> भक्तिभावाने गणेशोत्सव साजरा करत आहे.</p>
+        <p>सुरुवात काही मोजक्या कार्यकर्त्यांनी छोट्या स्वरूपात केली होती. हळूहळू परिसरातील नागरिक, युवक आणि ज्येष्ठ मंडळी यांचा सहभाग वाढत गेला आणि आज हे मंडळ सुदामनगर परिसरातील एक प्रतिष्ठित आणि मानाचा गणपती म्हणून ओळखले जाते.</p>
+        <p>या वर्षांमध्ये मंडळाने अनेक सामाजिक उपक्रम राबवले आहेत, जसे की:</p>
+        <ul>
+          <li>रक्तदान शिबिर</li>
+          <li>आरोग्य तपासणी शिबिर</li>
+          <li>विद्यार्थ्यांना शैक्षणिक मदत</li>
+          <li>स्वच्छता मोहीम</li>
+        </ul>
+        <p>गणेशोत्सवाच्या काळात दररोज आरती, भजन, सांस्कृतिक कार्यक्रम आणि भक्तिमय वातावरण निर्माण केले जाते. हजारो भाविक दरवर्षी बाप्पाचे दर्शन घेण्यासाठी येथे येतात.</p>
+        <p><strong>“गणपती बाप्पा मोरया”</strong> हा नारा केवळ घोष नाही, तर आमच्या मंडळाची ओळख आणि श्रद्धा आहे.</p>
+      </div>
+    </section>
 
-    <div class="cards">
+    <section class="section" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">गणेशोत्सव काउंटडाउन</h2>
+      <div class="card countdown" id="countdown" aria-live="polite"></div>
+    </section>
 
-        <div class="card">
-            <h3>अध्यक्ष</h3>
-            <p>सागर बागुल</p>
-        </div>
+    <section class="section" id="committee">
+      <h2>कार्यकारिणी</h2>
+      <div class="cards">
+        <article class="card"><h3>अध्यक्ष</h3><p>सागर बागुल</p></article>
+        <article class="card"><h3>मार्गदर्शक</h3><p>राजेंद्र माने</p></article>
+        <article class="card"><h3>उपाध्यक्ष</h3><p>सुहास मोर्डे, मनोज पतंगे</p></article>
+        <article class="card"><h3>सचिव</h3><p>अमित परब</p></article>
+        <article class="card"><h3>खजिनदार</h3><p>श्रीकांत काकड</p></article>
+      </div>
+    </section>
 
-        <div class="card">
-            <h3>मार्गदर्शक</h3>
-            <p>राजेंद्र माने</p>
-        </div>
+    <section class="section" id="events">
+      <h2>कार्यक्रम</h2>
+      <div class="cards">
+        <article class="card"><h3>सकाळची आरती</h3><p>12:00 AM</p></article>
+        <article class="card"><h3>महाआरती</h3><p>9:00 PM</p></article>
+        <article class="card"><h3>सांस्कृतिक कार्यक्रम</h3><p>8:30 PM</p></article>
+      </div>
+    </section>
 
-        <div class="card">
-    <h3>उपाध्यक्ष</h3>
-    <p>सुहास मोर्डे, मनोज पतंगे</p>
-</div>
+    <section class="section" id="gallery">
+      <h2>छायाचित्रे</h2>
+      <div class="gallery">
+        <button type="button" onclick="openLight('photo1.jpeg')" aria-label="छायाचित्र १ मोठे करा"><img src="photo1.jpeg" alt="गणपती छायाचित्र १" onerror="showImageFallback(this)"><div class="image-fallback" hidden>श्री</div></button>
+        <button type="button" onclick="openLight('photo2.jpeg')" aria-label="छायाचित्र २ मोठे करा"><img src="photo2.jpeg" alt="गणपती छायाचित्र २" onerror="showImageFallback(this)"><div class="image-fallback" hidden>श्री</div></button>
+        <button type="button" onclick="openLight('photo3.jpeg')" aria-label="छायाचित्र ३ मोठे करा"><img src="photo3.jpeg" alt="गणपती छायाचित्र ३" onerror="showImageFallback(this)"><div class="image-fallback" hidden>श्री</div></button>
+        <button type="button" onclick="openLight('photo4.jpeg')" aria-label="छायाचित्र ४ मोठे करा"><img src="photo4.jpeg" alt="गणपती छायाचित्र ४" onerror="showImageFallback(this)"><div class="image-fallback" hidden>श्री</div></button>
+      </div>
+    </section>
 
-        <div class="card">
-            <h3>सचिव</h3>
-            <p>अमित परब</p>
-        </div>
+    <section class="section" id="donation">
+      <h2>देणगी</h2>
+      <div class="upi-box">
+        <p>UPI ID</p>
+        <strong>manachaganpati@upi</strong>
+      </div>
+    </section>
 
-        <div class="card">
-            <h3>खजिनदार</h3>
-            <p>श्रीकांत काकड</p>
-        </div>
+    <section class="section" id="location">
+      <h2>स्थान</h2>
+      <p>सुदामनगर, बोरिवली पूर्व, मुंबई - 400066</p>
+      <iframe src="https://www.google.com/maps?q=Borivali%20East%20Mumbai&output=embed" class="map" loading="lazy" title="सुदामनगर, बोरिवली पूर्व नकाशा"></iframe>
+    </section>
 
-    </div>
-</section>
-<!-- EVENTS -->
-<section class="section" id="events">
-    <h2>कार्यक्रम</h2>
-    <div class="cards">
-        <div class="card"><h3>सकाळची आरती</h3><p>12:00 AM</p></div>
-        <div class="card"><h3>महाआरती</h3><p>9:00 PM</p></div>
-        <div class="card"><h3>सांस्कृतिक कार्यक्रम</h3><p>8:30 PM</p></div>
-    </div>
-</section>
+    <section class="section" id="contact">
+      <h2>संपर्क</h2>
+      <div class="contact">
+        <p>☎ +91 8104291443</p>
+        <p>✉ info@ganpati.com</p>
+      </div>
+    </section>
+  </main>
 
-<!-- GALLERY -->
-<section class="section" id="gallery">
-    <h2>छायाचित्रे</h2>
-    <div class="gallery">
-        <img src="photo1.jpeg" onclick="openLight(this.src)">
-<img src="photo2.jpeg" onclick="openLight(this.src)">
-<img src="photo3.jpeg" onclick="openLight(this.src)">
-<img src="photo4.jpeg" onclick="openLight(this.src)">
-    </div>
-</section>
+  <div class="lightbox" id="lightbox" onclick="closeLight()" role="dialog" aria-label="मोठे छायाचित्र">
+    <img id="lightboxImg" alt="मोठे गणपती छायाचित्र" onerror="showImageFallback(this)">
+    <div class="image-fallback" hidden>श्री</div>
+  </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLight()">
-    <img id="lightboxImg">
-</div>
+  <a class="whatsapp" href="https://wa.me/918104291443" target="_blank" rel="noopener" aria-label="WhatsApp वर संपर्क करा">☏</a>
 
-<!-- DONATION -->
-<section class="section" id="donation">
-    <h2>देणगी</h2>
-    <div class="upi-box">
-        <h3>UPI ID</h3>
-        <p>manachaganpati@upi</p>
-    </div>
-</section>
+  <footer>© 2026 मानाचा गणपती सुदामनगरचा</footer>
 
-<!-- LOCATION -->
-<section class="section" id="location">
-    <h2>स्थान</h2>
-    <p>सुदामनगर, बोरिवली पूर्व, मुंबई - 400066</p>
-
-    <iframe
-        src="https://www.google.com/maps?q=Borivali%20East%20Mumbai&output=embed"
-        class="map">
-    </iframe>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-    <h2>संपर्क</h2>
-    <div class="contact">
-        <p>📞 +91 8104291443</p>
-        <p>📧 info@ganpati.com</p>
-    </div>
-</section>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/918104291443" target="_blank">📲</a>
-
-<footer>
-    © 2026 मानाचा गणपती सुदामनगरचा 
-</footer>
-
-<script>
-
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
-
-function toggleDark(){
-    document.body.classList.toggle("dark");
-}
-
-function openLight(src){
-    document.getElementById("lightbox").style.display="flex";
-    document.getElementById("lightboxImg").src=src;
-}
-
-function closeLight(){
-    document.getElementById("lightbox").style.display="none";
-}
-function updateCountdown(){
-    const target = new Date("September 17, 2026 00:00:00").getTime();
-    const now = new Date().getTime();
-    const diff = target - now;
-
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    const mins = Math.floor((diff%(1000*60*60))/(1000*60));
-
-    document.getElementById("countdown").innerHTML =
-    days + " दिवस " + hours + " तास " + mins + " मिनिटे";
-}
-setInterval(updateCountdown,1000);
-updateCountdown();
-let i = 0;
-const imgs = document.querySelectorAll(".gallery img");
-
-setInterval(()=>{
-    imgs.forEach(img=>img.style.transform="scale(1)");
-    if(imgs[i]){
-        imgs[i].style.transform="scale(1.15)";
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
     }
-    i = (i+1)%imgs.length;
-},2000);
 
-</script>
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
 
+    function showImageFallback(img) {
+      img.hidden = true;
+      const fallback = img.nextElementSibling;
+      if (fallback && fallback.classList.contains("image-fallback")) {
+        fallback.hidden = false;
+      }
+    }
 
+    function openLight(src) {
+      const lightbox = document.getElementById("lightbox");
+      const image = document.getElementById("lightboxImg");
+      const fallback = lightbox.querySelector(".image-fallback");
+      image.hidden = false;
+      fallback.hidden = true;
+      image.src = src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLight() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+
+    function updateCountdown() {
+      const target = new Date("2026-09-17T00:00:00+05:30").getTime();
+      const now = Date.now();
+      const diff = Math.max(target - now, 0);
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `<span>${days}<small>दिवस</small></span>` +
+        `<span>${hours}<small>तास</small></span>` +
+        `<span>${mins}<small>मिनिटे</small></span>` +
+        `<span>${secs}<small>सेकंद</small></span>`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    let activeGalleryIndex = 0;
+    const galleryButtons = document.querySelectorAll(".gallery button");
+    setInterval(() => {
+      galleryButtons.forEach((button) => button.style.transform = "");
+      if (galleryButtons[activeGalleryIndex]) {
+        galleryButtons[activeGalleryIndex].style.transform = "translateY(-3px) scale(1.02)";
+      }
+      activeGalleryIndex = (activeGalleryIndex + 1) % galleryButtons.length;
+    }, 2200);
+
+    document.body.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, iframe")) return;
+      const burst = document.createElement("div");
+      burst.className = "burst";
+      burst.textContent = "🎆";
+      burst.style.left = `${event.clientX}px`;
+      burst.style.top = `${event.clientY}px`;
+      document.body.appendChild(burst);
+      setTimeout(() => burst.remove(), 900);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLight();
+    });
+  </script>
 </body>
 </html>
